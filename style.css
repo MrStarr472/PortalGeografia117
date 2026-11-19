@@ -1,0 +1,48 @@
+:root{
+    --BG: #ffffff;
+    --card: #EEF9F9;
+    --texto: #132442;
+    --textoD: #3551A4;
+    --borda: #8AD6D6;
+    --destaque: #D6E264;
+    --hover: #132442;
+    --Header:#80A1F8;
+    --Tema: #e2e6cb;
+}
+
+body{
+    color: var(--texto);
+}
+
+#Tema{
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition:background-color 0.5s ease;
+    background-color: var(--BG);
+    color: var(--textoD);
+    margin-left: 0vw;
+    margin-right: 2vw;
+}
+#Tema:hover{
+    
+    text-decoration: none;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition:background-color 0.5s ease;
+    background-color: var(--BG);
+    color: var(--textoD);
+    margin-left: 0vw;
+    margin-right: 2vw;
+}
+
+
+nav a:hover {
+    text-decoration: underline;
+    background-color: var(--destaque);
+}
+
