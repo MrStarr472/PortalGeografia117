@@ -1,48 +1,203 @@
-:root{
-    --BG: #ffffff;
+/* =========================================================
+   FONTES
+   Textos: Poppins Light 
+   Títulos: Nofex 
+   ========================================================= */
+@font-face {
+    font-family: "Nofex";
+    src: local("Nofex"), url("fonts/nofex.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* =========================================================
+   PALETA — TEMA CLARO (padrão)
+   ========================================================= */
+:root {
+    color-scheme: light;
+
+    --fundo: #FFFFFF;
     --card: #EEF9F9;
     --texto: #132442;
-    --textoD: #3551A4;
+    --texto-2: #3551A4;
+    --link: #3551A4;
     --borda: #8AD6D6;
     --destaque: #D6E264;
     --hover: #132442;
-    --Header:#80A1F8;
-    --Tema: #e2e6cb;
+
+    
+    --texto-destaque: #132442;
+
+    --fonte-texto: "Poppins", system-ui, sans-serif;
+    --fonte-titulo: "Nofex", Impact, "Arial Black", sans-serif;
 }
 
-body{
+/* PALETA — TEMA ESCURO  */
+[data-tema="escuro"] {
+    color-scheme: dark;
+
+    --fundo: #132442;
+    --card: #1B3159;
+    --texto: #F4FAFA;
+    --texto-2: #8AD6D6;
+    --link: #80A1F8;
+    --borda: #3551A4;
+    --destaque: #D6E264;
+    --hover: #8AD6D6;
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+body {
+    font-family: var(--fonte-texto);
+    font-weight: 300;
+    line-height: 1.7;
+    background-color: var(--fundo);
+    color: var(--texto);
+    min-height: 100vh;
+    display: flex;              /* rodapé sempre no fim da página */
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+main {
+    flex: 1;
+}
+
+strong {
+    font-weight: 600;
+}
+
+a {
+    color: var(--link);
+}
+
+a:hover {
+    color: var(--texto-2);
+}
+
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--destaque);
+    outline-offset: 3px;
+}
+
+/* =========================================================
+   TÍTULOS (Nofex)
+   ========================================================= */
+h1, h2, h3, h4 {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;           /* a Nofex só tem um peso; evita "negrito falso" */
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
     color: var(--texto);
 }
 
-#Tema{
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); }
+
+/* Títulos de cartão ficam em Poppins para ler bem nomes longos */
+.card-title {
+    font-family: var(--fonte-texto);
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+/* =========================================================
+   MENU (nav)
+   ========================================================= */
+nav a,
+#Tema {
     text-decoration: none;
     padding: 8px 16px;
     border-radius: 50px;
-    transition:background-color 0.5s ease;
-    background-color: var(--BG);
-    color: var(--textoD);
-    margin-left: 0vw;
-    margin-right: 2vw;
-}
-#Tema:hover{
-    
-    text-decoration: none;
-}
-
-nav a {
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 50px;
-    transition:background-color 0.5s ease;
-    background-color: var(--BG);
-    color: var(--textoD);
+    transition: background-color 0.5s ease, color 0.5s ease;
+    background-color: var(--fundo);
+    color: var(--link);
     margin-left: 0vw;
     margin-right: 2vw;
 }
 
+nav a.navbar-brand {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--link);
+}
 
-nav a:hover {
+nav a[aria-current="page"] {
+    background-color: var(--destaque);
+    color: var(--texto-destaque);
+}
+
+nav a:hover,
+#Tema:hover {
     text-decoration: underline;
     background-color: var(--destaque);
+    color: var(--texto-destaque);
 }
 
+#Tema {
+    border: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+/* =========================================================
+   CARDS E BADGES 
+   ========================================================= */
+.card {
+    --bs-card-bg: var(--card);
+    --bs-card-color: var(--texto);
+    --bs-card-border-color: var(--borda);
+    --bs-card-border-width: 2px;
+    --bs-card-border-radius: 16px;
+}
+
+.badge.bg-primary {
+    background-color: var(--link) !important;
+    color: var(--fundo);
+    font-weight: 600;
+}
+
+/* =========================================================
+   RODAPÉ 
+   ========================================================= */
+.rodape {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    padding: 20px 32px;
+    background-color: var(--hover);
+    color: var(--fundo);
+    font-size: 0.9rem;
+}
+
+.rodape p {
+    margin: 4px 0;
+}
+
+.rodape a {
+    color: var(--fundo);
+    text-decoration: underline;
+}
+
+.rodape a:hover {
+    color: var(--fundo);
+    text-decoration-thickness: 3px;
+}
+
+@media (max-width: 600px) {
+    .rodape {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 20px;
+    }
+}
